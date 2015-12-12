@@ -1,0 +1,15 @@
+meteor add twbs:bootstrap
+
+meteor add fortawesome:fontawesome
+
+
+https://farm9.staticflickr.com/8573/15700312263_60fd816790_h.jpg
+
+
+sesión2
+=============
+
+meteor add peppelg:bootstrap-3-modal
+meteor add accounts-base
+meteor add accounts-password
+meteor add themeteorchef:jquery-validation

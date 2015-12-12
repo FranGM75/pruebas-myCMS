@@ -1,0 +1,129 @@
+<head>
+  <title>myCMS</title>
+</head>
+
+<body>
+  {{> navbar}}
+  {{> content}}
+</body>
+
+<template name="navbar">
+    <div class="nav container-fluid">
+        <div class="logo">
+          <h1>myCMS</h1>
+        </div>
+
+      <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Este botón despliega la barra de navegación</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="#"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Entradas</a></li>
+              <li><a href="#"><span class="fa fa-thumbs-o-up" aria-hidden="true"></span> Favoritos</a></li>
+              <li><a href="#"><span class="fa fa-users"></span> Autores</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            {{#if currentUser}}
+                <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{currentUser.username}}</a></li>
+                <li><a href="#" data-toggle="modal" id="logout"><span class="fa fa-sign-out" aria-hidden="true"></span></a></li>
+            {{else}}
+              <li><a href="#" data-toggle="modal" id="login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Iniciar sesión</a></li>
+              <li><a href="#" data-toggle="modal" id="register"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Registro</a></li>
+            {{/if}}
+
+          <!--    <a href="#" data-toggle="modal" data-target="#bannerformmodal" id="the_link">Load me</a>-->
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+  </div>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1>myCMS Gestor de Contenidos</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+
+  </div>
+</template>
+
+<template name="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <span class="fa fa-clock-o" aria-hidden="true"></span>  Últimas entradas
+              </div>
+              <div class="panel-body">
+                <p>
+                    Aún no hay entradas para mostrar
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <span class="fa fa-search" aria-hidden="true"></span> Búsqueda
+                </div>
+                <div class="panel-body">
+                  <div class="form-group">
+                    <input type="search" class="form-control" name="name" value="" placeholder="Introduce texto a buscar">
+                  </div>
+                  <button class="form-control search-button" name="button">Buscar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <span class="fa fa-filter" aria-hidden="true"></span> Etiquetas
+                </div>
+                <div class="panel-body">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <span class="fa fa-calendar" aria-hidden="true"></span> Archivo
+                </div>
+                <div class="panel-body">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

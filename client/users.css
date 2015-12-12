@@ -1,0 +1,21 @@
+
+.modal-content {
+  border-radius: 0;
+  color:#99c00f;
+  overflow:auto;
+}
+
+
+.btn-default{
+  background-color: #99c00f !important;
+  color: white !important;
+}
+
+input.error{
+    background-color:rgb(255, 231, 231);
+}
+
+
+.error {
+   color: red;
+}
