@@ -86,13 +86,13 @@ Template.register.events({
         console.log(err.reason);
         //Username already exists.
         if(err.reason == "Username already exists."){
-            validator.showErrors({
+            validador.showErrors({
                 regnombre: "Ya existe un usuario con ese nombre."
             });
         }
 
-        if(error.reason == "Email already exists."){
-            validator.showErrors({
+        if(err.reason == "Email already exists."){
+            validador.showErrors({
               regmail: "El email ya pertenece a un usuario registrado."
             });
         }
@@ -127,14 +127,14 @@ Template.login.events({
     Meteor.loginWithPassword(user,pass,function(err){
 
       if(err){
-        if(error.reason == "User not found"){
+        if(err.reason == "User not found"){
           validator.showErrors({
-            email: "Ese usuario no existe."
+            lognombre: "Ese usuario no existe."
           });
         }
-        if(error.reason == "Incorrect password"){
+        if(err.reason == "Incorrect password"){
           validator.showErrors({
-            password: "Has entrado una contraseña incorrectad."
+            logclave1: "Has entrado una contraseña incorrecta."
           });
         }
       }else{
@@ -143,6 +143,8 @@ Template.login.events({
         Modal.hide(template);
       }
       });
+    console.log('login form'+user+pass);
+    return false;
   }
 });
 

@@ -8,9 +8,12 @@
 </body>
 
 <template name="navbar">
-    <div class="nav container-fluid">
-        <div class="logo">
-          <h1>myCMS</h1>
+  
+    <div class="nav contsainer-fluid">
+        <div class="row">
+          <div class="col-md-offset-1">
+            <h1>myCMS</h1>
+          </div>
         </div>
 
       <nav class="navbar navbar-default navbar-static-top">
@@ -34,8 +37,8 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
             {{#if currentUser}}
-                <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{currentUser.username}}</a></li>
-                <li><a href="#" data-toggle="modal" id="logout"><span class="fa fa-sign-out" aria-hidden="true"></span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuario: {{currentUser.username}}</a></li>
+                <li><a href="#" data-toggle="modal" id="logout"><span class="fa fa-sign-out" aria-hidden="true"></span> Cerrar sesión</a></li>
             {{else}}
               <li><a href="#" data-toggle="modal" id="login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Iniciar sesión</a></li>
               <li><a href="#" data-toggle="modal" id="register"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Registro</a></li>
