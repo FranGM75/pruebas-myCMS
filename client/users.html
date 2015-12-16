@@ -124,3 +124,39 @@
     </div>
   </div>
 </template>
+
+<template name="forgottenPassword">
+<div class="modal fade">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      </div>
+        <div class="modal-body text-center">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  ¿Olvidaste la contraseña?
+                </h3>
+              </div>
+              <div class="panel-body">
+                <form role="form" method="post" id="forgottenPassword-form">
+                  <div class="form-group">
+                    <label>Al pulsar el botón se le reenviará la contraseña al mail que puso al registrarse</label>
+                    <br>
+                    <br>
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="fgttmail" placeholder="email" id="fgttemail" required>
+                    <br>
+                  </div>
+                    <input type="submit" id="forgottenPassword-form" class="btn btn-default btn-primary" value="Reenviar contraseña" />
+                  <br>
+                </form>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+

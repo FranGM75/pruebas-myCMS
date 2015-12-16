@@ -30,6 +30,10 @@ validador.setDefaults({
     logclave1:{
       required:true,
       minlength:6
+    },
+    fgttemail:{
+      required:true,
+      email:true
     }
   },
   messages:{
@@ -40,7 +44,7 @@ validador.setDefaults({
     },
     regmail:{
       required:"Debes introducir un email",
-      email:"Has introducido un email no valido",
+      email:"Has introducido un email no valido"
     },
     regclave1:{
       required:"Debes introducir una contraseña",
@@ -59,6 +63,10 @@ validador.setDefaults({
     logclave1:{
       required:"Debes introducir una contraseña",
       minlength:"como mínimo {0} carácteres"
+    },
+    fgttemail:{
+      required:"Debes introducir un email",
+      email:"Has introducido un email no valido"
     }
   }
   });
@@ -120,6 +128,14 @@ Template.login.events({
       Modal.hide(template);
       Modal.show('register');
   },
+  
+  "click a#logolvid": function(event, template){
+     event.preventDefault();
+      Modal.hide(template);
+      Modal.show('forgottenPassword');
+  },
+  
+  
   "submit #login-form":function(event,template){
     var user = template.find("#lognombre").value;
     var pass = template.find("#logpass1").value;
@@ -159,4 +175,14 @@ Template.logout.events({
         Modal.hide(template);
       });
   }
+});
+
+Template.forgottenPassword.events({
+  "submit #forgottenPassword-form":function(event,template){
+    
+  }
+});
+
+Template.forgottenPassword.onRendered(function(){
+  validator=$('forgottenPassword-form').validate();
 });
