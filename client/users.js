@@ -31,7 +31,7 @@ validador.setDefaults({
       required:true,
       minlength:6
     },
-    fgttemail:{
+    fgttmail:{
       required:true,
       email:true
     }
@@ -64,7 +64,7 @@ validador.setDefaults({
       required:"Debes introducir una contraseña",
       minlength:"como mínimo {0} carácteres"
     },
-    fgttemail:{
+    fgttmail:{
       required:"Debes introducir un email",
       email:"Has introducido un email no valido"
     }
@@ -85,7 +85,7 @@ Template.register.events({
 
     var userObject = {
       username: user,
-      mail: email,
+      email: email,
       password: pass1
     };
 
@@ -94,13 +94,13 @@ Template.register.events({
         console.log(err.reason);
         //Username already exists.
         if(err.reason == "Username already exists."){
-            validador.showErrors({
+            validator.showErrors({
                 regnombre: "Ya existe un usuario con ese nombre."
             });
         }
 
         if(err.reason == "Email already exists."){
-            validador.showErrors({
+            validator.showErrors({
               regmail: "El email ya pertenece a un usuario registrado."
             });
         }
@@ -128,14 +128,14 @@ Template.login.events({
       Modal.hide(template);
       Modal.show('register');
   },
-  
+
   "click a#logolvid": function(event, template){
      event.preventDefault();
       Modal.hide(template);
       Modal.show('forgottenPassword');
   },
-  
-  
+
+
   "submit #login-form":function(event,template){
     var user = template.find("#lognombre").value;
     var pass = template.find("#logpass1").value;
@@ -172,6 +172,7 @@ Template.login.onRendered(function () {
 Template.logout.events({
   "submit #logout-form":function(event,template){
       Meteor.logout(function(){
+        event.preventDefault();
         Modal.hide(template);
       });
   }
@@ -179,10 +180,30 @@ Template.logout.events({
 
 Template.forgottenPassword.events({
   "submit #forgottenPassword-form":function(event,template){
-    
+    var email = template.find('#fgttemail').value;
+
+    Accounts.forgotPassword({email: email}, function(err){
+      if(err){
+        if(err.reason === 'User not found [403]'){
+          validator.showErrors({
+            fgttmail:"Este email no existe."
+            });
+        }
+        else{
+          validator.showErrors({
+            fgttmail: "Algo fué mal."
+          });
+        }
+      } else{
+        console.log('email sent');
+        Modal.hide(template);
+      }
+
+    });
+    return false;
   }
 });
 
-Template.forgottenPassword.onRendered(function(){
-  validator=$('forgottenPassword-form').validate();
+Template.forgottenPassword.onRendered(function () {
+  validator=$('#forgottenPassword-form').validate();
 });
