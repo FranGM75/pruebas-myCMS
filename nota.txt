@@ -8,8 +8,118 @@ https://farm9.staticflickr.com/8573/15700312263_60fd816790_h.jpg
 
 sesión2
 =============
-
-meteor add peppelg:bootstrap-3-modal
 meteor add accounts-base
 meteor add accounts-password
+meteor add peppelg:bootstrap-3-modal
 meteor add themeteorchef:jquery-validation
+meteor add msavin:mongol
+
+
+sesión 6
+==========
+meteor remove insecure
+
+publish en methods.js y subscribes en mycms.js
+	methods.js
+	=============
+	Meteor.publish('Entradas', function () {
+    return Entradas.find();
+	});
+
+	Meteor.publish('Comentarios', function () {
+    return Comentarios.find();
+	});
+	
+	mycms.js
+	========
+	Meteor.subscribe('Entradas');
+	Meteor.subscribe('Comentarios');
+
+añadir createdAt en schemas Entradas y Comentarios.
+
+"createdAt":{
+        type:Date,
+        label:"Created at",
+        autoValue:function(){
+            return new Date;
+        }
+    }
+    
+
+Cambiar startup.js añadir \n"+
+
+crear template Entrada y helper EntradaE con Spacebars.SafeString(str.replace(/(\n)+/g, '<br />'));
+	Entrada.html
+	=============
+	<template name="Entrada">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{title}}
+                    <span class="pull-right">{{createdAtE createdAt}}</span>
+                </div>
+                <div class="panel-body text-justify">
+                    <p>
+                    {{textoE texto}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+	
+	Entrada.js
+	===========
+	Template.Entrada.helpers({
+  'textoE':function(str){
+      var res = Spacebars.SafeString(str.replace(/(\n)+/g, '<br />'));
+      return res;
+  },
+  'createdAtE':function(sdate){
+      var res = sdate.toLocaleDateString()+" "+sdate.toLocaleTimeString();
+      return res;
+  }
+});
+
+
+helper createdAtE con sdate.toLocaleDateString()+" "+sdate.toLocaleTimeString();
+
+
+sesión 7
+=============
+1) meteor add iron:router.
+
+2) cambiar templates.
+
+3) añadir rutas.
+
+3.1) cambiar titulo de entradas por link.
+
+3.2) añadir carpeta utils y pasar esto alli:
+
+createdAtEs = function (sDate){
+  return sDate.toLocaleDateString()+' '+sDate.toLocaleTimeString();
+}
+
+textoEs = function (sTexto){
+    return Spacebars.SafeString(sTexto.replace(/(\n)+/g,'<br />'));
+}
+
+4) templates not found.
+
+5) meteor add multiply:iron-router-progress
+
+6) cambiar logo y poner tipo link html y css.
+	<a class="logo" href="/"><h1>myCMS</h1></a>
+	
+	.logo{
+    text-decoration:none !important;
+    color:#99c00f;
+	}
+
+	.logo:hover{
+    text-decoration:none !important;
+    color: #99c00f !important;
+	}
+

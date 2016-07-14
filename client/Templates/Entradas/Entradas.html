@@ -1,0 +1,28 @@
+
+
+
+<template name="entrada">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="/entrada/{{title}}">{{title}}</a>
+                    <span class="pull-right">
+                        {{createdAtE createdAt}}
+                    </span>
+                </div>
+                <div class="panel-body text-justify">
+                    {{textoE texto}}
+
+                    {{#if coments_num}}
+                    <br>
+                    <span class="pull-right">
+                        <a href="#" role="button">{{coments_num}} comentarios</a>
+                    </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>

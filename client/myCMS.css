@@ -1,14 +1,12 @@
 /* CSS declarations go here */
 /*.logo{
-  margin-left: 280px;
+  margin-bottom: 30px;
 }*/
-
 body{
-  background-image: url('../symphony.png');
+  background-image: url(symphony.png);
   font-family: 'Roboto', sans-serif;
 }
-
-.nav {
+.topbar {
   background: #333;
   color:#99c00f;
 }
@@ -19,37 +17,31 @@ body{
 }
 
 .navbar .nav >li >a{
-  color: white;
-  text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+  color:white;
 }
 
 .navbar li a:hover, .navbar li a:active{
-    color: #99c00f !important;
-}
-
-.container{
-/*  border-color: red;
-  border-style: solid;
-  border-width: 10px;*/
+  color: #99c00f !important;
 }
 
 .jumbotron{
   color:white;
-/*  color: #99c00f;*/
   text-align: center;
-/*  background:#99c00f;*/
   background-image: url('https://farm9.staticflickr.com/8573/15700312263_60fd816790_h.jpg');
   background-attachment: fixed;
-
-/*  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/45544/background-svg.svg);
-*/}
-
-.panel-heading{
-  background-color: #99c00f !important;
-  color: white !important;
 }
 
-.search-button{
+.panel-heading, .btn{
   background-color: #99c00f !important;
-  color: white !important;
+  color:white !important;
+}
+
+.logo{
+    text-decoration:none !important;
+    color:#99c00f;
+}
+
+.logo:hover{
+    text-decoration:none !important;
+    color: #99c00f !important;
 }
